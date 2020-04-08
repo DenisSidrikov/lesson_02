@@ -1,4 +1,4 @@
-//"use strict"; 
+"use strict"; 
 function getExpensesMonth(a,b) {
     return a+b;
 }
@@ -8,8 +8,6 @@ function getAccumulatedMonth(a,b) {
 function getTargetMonth (a,b) {
     return Math.ceil(a/b);
 }
-
-
 
 let income = 'freelance';
 let mission = 1000000;
@@ -40,8 +38,6 @@ console.log("Сколько месяцев нужно для достижени�
 
 let budgetDay = Math.floor(accumulatedMonth /30);
 console.log("Бюджет на день - "+ budgetDay);
-
-
 
 let getStatusIncome = function(){
 if (budgetDay === 1200 || budgetDay > 1200){
