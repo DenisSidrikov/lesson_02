@@ -8,6 +8,9 @@ function getAccumulatedMonth(a,b) {
 function getTargetMonth (a,b) {
     return Math.ceil(a/b);
 }
+ function showTypeOf (a){
+    console.log(typeof a);
+ }
 
 let income = 'freelance';
 let mission = 1000000;
@@ -18,13 +21,15 @@ let addExpenses = prompt("Перечислите возможные расход
 console.log(addExpenses.length);
 console.log(addExpenses.split(', '));
 let deposit = confirm("Есть ли у вас депозит в банке?");
-console.log(typeof money,typeof addExpenses, typeof deposit+ " " + deposit);
+showTypeOf(money);
+showTypeOf(addExpenses);
+showTypeOf(deposit);
 let expenses1 = prompt("Введите обязательную статью расходов №1?");
 let amount1 = +prompt("Сколько тебе нужно потратить на " + expenses1 + " в месяц?");
 let expenses2 = prompt("Введите обязательную статью расходов №2?");
 let amount2 = +prompt("Сколько тебе нужно потратить на " + expenses2 + " в месяц?");
 let totalExpenses=getExpensesMonth(amount1,amount2);
- console.log("Расходы за месяц -"+totalExpenses);
+ console.log("Расходы за месяц - "+totalExpenses);
 let accumulatedMonth;
 if (totalExpenses <= money){
     accumulatedMonth  = getAccumulatedMonth(money,totalExpenses);
