@@ -1,16 +1,4 @@
-"use strict"
-/*(function () {
-    'use strict';
-    
-    // this function is strict...
- }());
- 
- (function () {
-    // but this function is sloppy...
-   
- }());*/
-
-    
+"use strict"  
 let income = 'freelance';
 let mission = 1000000;
 let period =12;
