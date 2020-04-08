@@ -1,4 +1,16 @@
-"use strict"  
+//"use strict"; 
+function getExpensesMonth(a,b) {
+    return a+b;
+}
+function getAccumulatedMonth(a,b) {
+    return a-b;
+}
+function getTargetMonth (a,b) {
+    return Math.ceil(a/b);
+}
+
+
+
 let income = 'freelance';
 let mission = 1000000;
 let period =12;
@@ -13,22 +25,25 @@ let expenses1 = prompt("Введите обязательную статью р�
 let amount1 = +prompt("Сколько тебе нужно потратить на " + expenses1 + " в месяц?");
 let expenses2 = prompt("Введите обязательную статью расходов №2?");
 let amount2 = +prompt("Сколько тебе нужно потратить на " + expenses2 + " в месяц?");
-let totalExpenses=amount1+amount2;
-let budgetMonth ;
+let totalExpenses=getExpensesMonth(amount1,amount2);
+ console.log("Расходы за месяц -"+totalExpenses);
+let accumulatedMonth;
 if (totalExpenses <= money){
-budgetMonth = money-totalExpenses;
-console.log("Бюджет на месяц - "+ budgetMonth);
+    accumulatedMonth  = getAccumulatedMonth(money,totalExpenses);
+console.log("Бюджет на месяц - "+ accumulatedMonth );
 } else {
     alert("Твои расходы превышают доходы!");
 }
-period =Math.ceil(mission/budgetMonth);
+
+period =getTargetMonth(mission,accumulatedMonth);
 console.log("Сколько месяцев нужно для достижение цели - "+ period);
 
-let budgetDay = Math.floor(budgetMonth/30);
+let budgetDay = Math.floor(accumulatedMonth /30);
 console.log("Бюджет на день - "+ budgetDay);
 
 
 
+let getStatusIncome = function(){
 if (budgetDay === 1200 || budgetDay > 1200){
     console.log("У вас высокий уровень дохода!");
 } else if(budgetDay === 600 || budgetDay >600){
@@ -38,3 +53,5 @@ if (budgetDay === 1200 || budgetDay > 1200){
 } else  {
    console.log("Что то пошло не так");
 }
+};
+getStatusIncome();
