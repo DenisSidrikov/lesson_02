@@ -1,3 +1,4 @@
+"use strict"
 /*(function () {
     'use strict';
     
@@ -8,6 +9,7 @@
     // but this function is sloppy...
    
  }());*/
+
     
 let income = 'freelance';
 let mission = 1000000;
@@ -20,12 +22,13 @@ console.log(addExpenses.split(', '));
 let deposit = confirm("Есть ли у вас депозит в банке?");
 console.log(typeof money,typeof addExpenses, typeof deposit+ " " + deposit);
 let expenses1 = prompt("Введите обязательную статью расходов №1?");
-let expenses2 = prompt("Введите обязательную статью расходов №2?");
 let amount1 = +prompt("Сколько тебе нужно потратить на " + expenses1 + " в месяц?");
+let expenses2 = prompt("Введите обязательную статью расходов №2?");
 let amount2 = +prompt("Сколько тебе нужно потратить на " + expenses2 + " в месяц?");
 let totalExpenses=amount1+amount2;
+let budgetMonth ;
 if (totalExpenses <= money){
-var budgetMonth = money-totalExpenses;
+budgetMonth = money-totalExpenses;
 console.log("Бюджет на месяц - "+ budgetMonth);
 } else {
     alert("Твои расходы превышают доходы!");
@@ -33,7 +36,7 @@ console.log("Бюджет на месяц - "+ budgetMonth);
 period =Math.ceil(mission/budgetMonth);
 console.log("Сколько месяцев нужно для достижение цели - "+ period);
 
-var budgetDay = Math.floor(budgetMonth/30);
+let budgetDay = Math.floor(budgetMonth/30);
 console.log("Бюджет на день - "+ budgetDay);
 
 
