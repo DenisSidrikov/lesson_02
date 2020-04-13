@@ -47,6 +47,9 @@ let getExpensesMonth = function(){
     for( let i=0;i<2;i++){
         expenses[i] = prompt("Введите обязательную статью расходов ?");
         sum=+prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
+        while (!isNamber(sum)){
+            sum=prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
+        }
     }
     console.log(sum);
     return sum;
