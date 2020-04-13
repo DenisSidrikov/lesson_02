@@ -24,8 +24,8 @@ let period =12;
 let money;
 let start = function(){
     money = +prompt("Ваш месячный доход?");
-    while (!isNamber(money)){
-        money=prompt("Ваш месячный доход?");
+    while (!isNamber(parseFloat(money))){
+        money=+prompt("Ваш месячный доход?");
     }
 };
 start();
@@ -46,12 +46,12 @@ let getExpensesMonth = function(){
     let sum = 0;
     for( let i=0;i<2;i++){
         expenses[i] = prompt("Введите обязательную статью расходов ?");
-        sum=+prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
-        while (!isNamber(sum)){
-            sum=prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
+        sum+=+prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
+        while (!isNamber(parseFloat(sum))){
+            sum+=+prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
         }
     }
-    console.log(sum);
+    console.log("сумма"+sum);
     return sum;
 }
 
