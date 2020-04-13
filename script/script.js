@@ -1,21 +1,35 @@
 "use strict"; 
-function getExpensesMonth(a,b) {
-    return a+b;
-}
+
 function getAccumulatedMonth(a,b) {
     return a-b;
 }
 function getTargetMonth (a,b) {
-    return Math.ceil(a/b);
+    let returnNumber=Math.ceil(a/b);
+    if (returnNumber<0){
+        console.log("Цель не будет достигнута!!!!!!!!!!!!!!!!!!!!!!!")
+    }
+    return returnNumber;
 }
  function showTypeOf (a){
     console.log(typeof a);
+ }
+ let isNamber = function (n){
+     return !isNaN(parseFloat(n)) && isFinite(n);
  }
 
 let income = 'freelance';
 let mission = 1000000;
 let period =12;
-let money = +prompt("Ваш месячный доход?");
+
+let money;
+let start = function(){
+    money = +prompt("Ваш месячный доход?");
+    while (!isNamber(money)){
+        money=prompt("Ваш месячный доход?");
+    }
+};
+start();
+
 console.log("Период равен"+" "+period+" "+"месяцев"+" "+"Цель заработать "+mission+" рублей" ) ;
 let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
 console.log(addExpenses.length);
@@ -24,12 +38,23 @@ let deposit = confirm("Есть ли у вас депозит в банке?");
 showTypeOf(money);
 showTypeOf(addExpenses);
 showTypeOf(deposit);
-let expenses1 = prompt("Введите обязательную статью расходов №1?");
-let amount1 = +prompt("Сколько тебе нужно потратить на " + expenses1 + " в месяц?");
-let expenses2 = prompt("Введите обязательную статью расходов №2?");
-let amount2 = +prompt("Сколько тебе нужно потратить на " + expenses2 + " в месяц?");
-let totalExpenses=getExpensesMonth(amount1,amount2);
+
+
+let expenses=[];
+
+let getExpensesMonth = function(){
+    let sum = 0;
+    for( let i=0;i<2;i++){
+        expenses[i] = prompt("Введите обязательную статью расходов ?");
+        sum=+prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
+    }
+    console.log(sum);
+    return sum;
+}
+
+let totalExpenses=getExpensesMonth();
  console.log("Расходы за месяц - "+totalExpenses);
+
 let accumulatedMonth;
 if (totalExpenses <= money){
     accumulatedMonth  = getAccumulatedMonth(money,totalExpenses);
