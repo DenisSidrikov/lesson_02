@@ -66,14 +66,11 @@ let appData = {
     }
 };
 
-
+appData.asking();
 console.log("Период равен" + " " + appData.period + " " + "месяцев" + " " + "Цель заработать " + appData.mission + " рублей");
 
 let expenses = [];
 let sumExpenses = [];
-
-
-
 let totalExpenses = appData.getExpensesMonth();
 console.log("Расходы за месяц - " + totalExpenses);
 
