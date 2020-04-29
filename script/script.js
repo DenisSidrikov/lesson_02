@@ -26,7 +26,23 @@ let appData = {
     asking: function () {
         let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
             appData.addExpenses=addExpenses.split(', ');
-            appDate.deposit = confirm("Есть ли у вас депозит в банке?");
+            appData.deposit = confirm("Есть ли у вас депозит в банке?");
+      
+
+            let sum = 0;
+            let finalSum = 0;
+            let expenses,sumExpenses;
+            for (let i = 0; i < 2; i++) {
+                expenses = prompt("Введите обязательную статью расходов ?");
+                sum = prompt("Сколько тебе нужно потратить на " + expenses + " в месяц?");
+                while (!isNamber(parseFloat(sum))) {
+                    sum = prompt("Сколько тебе нужно потратить на " + expenses + " в месяц?");
+                }
+               
+                appData.expenses[expenses]= +sum;
+            }
+
+
     },
     getAccumulatedMonth: function(a,b){
         return a - b;
@@ -39,19 +55,14 @@ let appData = {
     return returnNumber;
     },
     getExpensesMonth: function(){
-        let sum = 0;
-        let finalSum = 0;
-        for (let i = 0; i < 2; i++) {
-            expenses[i] = prompt("Введите обязательную статью расходов ?");
-            sum = prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
-            while (!isNamber(parseFloat(sum))) {
-                sum = prompt("Сколько тебе нужно потратить на " + expenses[i] + " в месяц?");
-            }
-            sumExpenses[i] = +sum;
-            finalSum = sumExpenses[0] + sumExpenses[1];
-        }
-        console.log("сумма!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + finalSum);
-        return finalSum;
+        let sum;
+        for ( let key in appData.expenses ) {
+            sum += appData.expenses[key];
+            console.log("!!!!!!!!!!!!!!!!!!!!" + sum);
+          }
+          appData.expensesMonth=sum;
+         
+          
     },
     getStatusIncome: function(){
         if (budgetDay === 1200 || budgetDay > 1200) {
@@ -88,5 +99,6 @@ console.log("Сколько месяцев нужно для достижени�
 let budgetDay = Math.floor(accumulatedMonth / 30);
 console.log("Бюджет на день - " + budgetDay);
 
-
+console.log(appData.expensesMonth);
+console.log(appData.expenses);
 appData.getStatusIncome();
