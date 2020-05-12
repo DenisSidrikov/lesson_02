@@ -44,7 +44,7 @@ let appData = {
 
 
     },
-    getBudget: function(a,b){
+    getAccumulatedMonth: function(a,b){
         return a - b;
         
     },
