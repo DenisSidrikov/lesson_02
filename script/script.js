@@ -55,10 +55,9 @@ let appData = {
     return returnNumber;
     },
     getExpensesMonth: function(){
-        let sum;
+        let sum=0;
         for ( let key in appData.expenses ) {
             sum += appData.expenses[key];
-            console.log("!!!!!!!!!!!!!!!!!!!!" + sum);
           }
           appData.expensesMonth=sum;
          
@@ -82,22 +81,22 @@ console.log("Период равен" + " " + appData.period + " " + "месяц
 
 let expenses = [];
 let sumExpenses = [];
-let totalExpenses = appData.getExpensesMonth();
+let totalExpenses = appData.expensesMonth;
 console.log("Расходы за месяц - " + totalExpenses);
 
-let accumulatedMonth;
+/*let accumulatedMonth;
 if (totalExpenses <= money) {
     accumulatedMonth = appData.getAccumulatedMonth(money, totalExpenses);
     console.log("Бюджет на месяц - " + accumulatedMonth);
 } else {
     alert("Твои расходы превышают доходы!");
-}
+}*/
 
 appData.period = appData.getTargetMonth(appData.mission, accumulatedMonth);
 console.log("Сколько месяцев нужно для достижение цели - " + appData.period);
 
-let budgetDay = Math.floor(accumulatedMonth / 30);
-console.log("Бюджет на день - " + budgetDay);
+/*let budgetDay = Math.floor(accumulatedMonth / 30);
+console.log("Бюджет на день - " + budgetDay);*/
 
 console.log(appData.expensesMonth);
 console.log(appData.expenses);
