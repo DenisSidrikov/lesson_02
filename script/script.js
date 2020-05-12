@@ -83,7 +83,9 @@ let appData = {
         }
     }
 };
-
+for (let key in appData) { 
+    console.log("Ключ:  "+ key +"Значение: "+appData[key]);
+}
 appData.asking();
 appData.getExpensesMonth();
 appData.getBudget();
@@ -97,7 +99,6 @@ console.log("Расходы за месяц - " + totalExpenses);
 
 appData.period = appData.getTargetMonth(appData.mission, appData.budgetMonth);
 console.log("Сколько месяцев нужно для достижение цели - " + appData.period);
-
 
 console.log(appData.expensesMonth);
 console.log(appData.expenses);
