@@ -22,7 +22,7 @@ let appData = {
     period: 12,
     budgetDay:0,
     budgetMonth:0,
-    expensesMonth:0,
+    expensesMonth:1,
     asking: function () {
         let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
             appData.addExpenses=addExpenses.split(', ');
@@ -44,8 +44,15 @@ let appData = {
 
 
     },
-    getAccumulatedMonth: function(a,b){
-        return a - b;
+    getBudget: function(){
+        
+            appData.budgetMonth = money-appData.expensesMonth;
+            console.log("Бюджет на месяц - " + appData.budgetMonth);
+            
+            appData.budgetDay = Math.floor(appData.budgetMonth / 30);
+            console.log("Бюджет на день - " + appData.budgetDay);
+
+        
         
     },
     getTargetMonth: function(a,b){
@@ -65,11 +72,11 @@ let appData = {
           
     },
     getStatusIncome: function(){
-        if (budgetDay === 1200 || budgetDay > 1200) {
+        if (appData.budgetDay === 1200 || appData.budgetDay > 1200) {
             console.log("У вас высокий уровень дохода!");
-        } else if (budgetDay === 600 || budgetDay > 600) {
+        } else if (appData.budgetDay === 600 || appData.budgetDay > 600) {
             console.log("У вас средний уровень дохода!");
-        } else if (budgetDay > 0) {
+        } else if (appData.budgetDay > 0) {
             console.log("К сожалению у вас уровень дохода ниже среднего!");
         } else {
             console.log("Что то пошло не так");
@@ -78,6 +85,9 @@ let appData = {
 };
 
 appData.asking();
+appData.getExpensesMonth();
+appData.getBudget();
+
 console.log("Период равен" + " " + appData.period + " " + "месяцев" + " " + "Цель заработать " + appData.mission + " рублей");
 
 let expenses = [];
@@ -85,19 +95,9 @@ let sumExpenses = [];
 let totalExpenses = appData.expensesMonth;
 console.log("Расходы за месяц - " + totalExpenses);
 
-let accumulatedMonth;
-if (totalExpenses <= money) {
-    accumulatedMonth = appData.getAccumulatedMonth(money, totalExpenses);
-    console.log("Бюджет на месяц - " + accumulatedMonth);
-} else {
-    alert("Твои расходы превышают доходы!");
-}
-
-appData.period = appData.getTargetMonth(appData.mission, accumulatedMonth);
+appData.period = appData.getTargetMonth(appData.mission, appData.budgetMonth);
 console.log("Сколько месяцев нужно для достижение цели - " + appData.period);
 
-let budgetDay = Math.floor(accumulatedMonth / 30);
-console.log("Бюджет на день - " + budgetDay);
 
 console.log(appData.expensesMonth);
 console.log(appData.expenses);
