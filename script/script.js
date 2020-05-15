@@ -18,12 +18,24 @@ let appData = {
     expenses: {},
     addExpenses: [],
     deposit: false,
+    percentDeposit:0,
+    moneyDeposit:0,
     mission: 50000,
     period: 12,
     budgetDay:0,
     budgetMonth:0,
     expensesMonth:1,
     asking: function () {
+            if (confirm("Есть ли у вас дополнительный заработок?")){
+                let itemIncome=prompt("Какой у вас дополнительный зароботок?","Таксую");
+                let cashIncome=prompt("Сколько в месяц вы на этом зарабатываете?", 10000);
+                while (!isNamber(parseFloat(cashIncome))) {
+                    cashIncome = prompt("Сколько в месяц вы на этом зарабатываете?", 10000);
+                }
+               
+                appData.income[itemIncome]=cashIncome;
+            }
+
         let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
             appData.addExpenses=addExpenses.split(', ');
             appData.deposit = confirm("Есть ли у вас депозит в банке?");
@@ -81,6 +93,22 @@ let appData = {
         } else {
             console.log("Что то пошло не так");
         }
+    },
+    getInfoDeposit: function(){
+        if(appData.deposit){
+            appData.percentDeposit = prompt("Какой годовой процент?",10);
+            while (!isNamber(parseFloat(appData.percentDeposit))) {
+                appData.percentDeposit = prompt("Какой годовой процент?",10);
+            }
+            appData.moneyDeposit=prompt("Какая суммв звложена?",10000);
+            while (!isNamber(parseFloat(appData.moneyDeposit))) {
+                appData.moneyDeposit = prompt("Какая суммв звложена?",10000);
+            }
+            
+        }
+    },
+    calcSavedMoney: function(){
+        return appData.budgetMonth*appData.period;
     }
 };
 for (let key in appData) { 
@@ -103,3 +131,4 @@ console.log("Сколько месяцев нужно для достижени�
 console.log(appData.expensesMonth);
 console.log(appData.expenses);
 appData.getStatusIncome();
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1'+appData.addExpenses);
