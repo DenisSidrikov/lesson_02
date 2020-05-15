@@ -28,6 +28,9 @@ let appData = {
     asking: function () {
             if (confirm("Есть ли у вас дополнительный заработок?")){
                 let itemIncome=prompt("Какой у вас дополнительный зароботок?","Таксую");
+                while (!isNaN(parseFloat(itemIncome))) {
+                    itemIncome = prompt("Какой у вас дополнительный зароботок?","Таксую");
+                }
                 let cashIncome=prompt("Сколько в месяц вы на этом зарабатываете?", 10000);
                 while (!isNamber(parseFloat(cashIncome))) {
                     cashIncome = prompt("Сколько в месяц вы на этом зарабатываете?", 10000);
@@ -46,6 +49,9 @@ let appData = {
             let expenses,sumExpenses;
             for (let i = 0; i < 2; i++) {
                 expenses = prompt("Введите обязательную статью расходов ?");
+                while (!isNaN(parseFloat(expenses))) {
+                    expenses = prompt("Введите обязательную статью расходов ?");
+                }
                 sum = prompt("Сколько тебе нужно потратить на " + expenses + " в месяц?");
                 while (!isNamber(parseFloat(sum))) {
                     sum = prompt("Сколько тебе нужно потратить на " + expenses + " в месяц?");
@@ -131,4 +137,4 @@ console.log("Сколько месяцев нужно для достижени�
 console.log(appData.expensesMonth);
 console.log(appData.expenses);
 appData.getStatusIncome();
-console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1'+appData.addExpenses);
+console.log('Возможные расходы '+ appData.addExensesp);
