@@ -137,4 +137,4 @@ console.log("Сколько месяцев нужно для достижени�
 console.log(appData.expensesMonth);
 console.log(appData.expenses);
 appData.getStatusIncome();
-console.log('Возможные расходы '+ appData.addExensesp);
+console.log('Возможные расходы '+appData.addExpenses);
